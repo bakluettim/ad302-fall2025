@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Music</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ana sayfa fontu için Inter kullanıyoruz */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; /* Beyaz arka plan */
+            line-height: 1.6;
+            overflow-x: hidden; /* Yatay kaydırmayı engelle */
+        }
+
+        /* `float` temizleme tekniği */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Tüm bölümler için temel stil */
+        section {
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* İçeriği varsayılan olarak ortala */
+        }
+        
+        /* İçerik katmanları için genel stil */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 2rem;
+            max-width: 1200px; /* Sabit bir maksimum genişlik belirle */
+        }
+
+        /* Resim kutusu için stil */
+        .image-box {
+            max-width: 400px;
+            margin-top: 2rem;
+            flex-shrink: 0;
+        }
+
+        /* FLOAT LAYOUT - SADECE MASAÜSTÜ İÇİN */
+        @media (min-width: 768px) {
+            .float-left-image {
+                float: left;
+                margin-right: 2rem;
+            }
+            .float-right-image {
+                float: right;
+                margin-left: 2rem;
+            }
+            .image-box {
+                margin-top: 0;
+            }
+        }
+        
+        /* Resmin kendisinin responsive davranmasını sağla */
+        .image-box img {
+            width: 100%;
+            height: auto; /* Oranını koru */
+        }
+        
+        /* Animasyonla belirecek öğeler için başlangıç stilimiz */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        /* Animasyon tetiklendiğinde öğenin görünür ve yerine oturmuş hali */
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sabit Başlık Çubuğu Stilleri */
+        #sticky-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            z-index: 50;
+        }
+
+        /* Başlık metni için geçiş efekti */
+        #header-title {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Alıntı stili */
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            border-left: 4px solid #fff;
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="sticky-header" class="fixed top-0 left-0 w-full text-white text-center">
+        <h1 id="header-title" class="text-3xl font-bold"></h1>
+    </header>
+
+    <section id="intro-section" data-header-title="Music" class="relative bg-white text-gray-900">
+        <div class="content-wrapper text-center mx-auto max-w-4xl p-6">
+            <div class="reveal-item">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Introduction: Creativity or Formulas</h2>
+                <p class="text-xl md:text-2xl font-normal">
+                    Music is a constant presence, found in every moment and every part of our lives. We listen to music while studying, while walking, when we're down, and when we're happy. Sometimes, we listen just for the sake of listening. We get excited when our favorite artists release a new album and can't wait to hear it. When a song we've never heard before in our playlist catches our ear, we can't help but look up the artist's other songs. Every new song in our lives evokes different emotions; each one holds a special place for us.
+
+We tend to think that other people can't feel the same way you do when they listen to a particular piece; we believe the echo of each note in our soul is unique to us. We believe that this feeling of uniqueness is what connects us to a song.
+
+But what if this is music's greatest trick? What if that very feeling of 'uniqueness' is itself part of a universal formula, designed by the composer for all of us? Does every song truly carry different emotions and meanings for everyone? What is it that makes a piece exciting, melancholic, sorrowful, agonizing, or euphoric? And do these effects occur by coincidence, or does the composer specifically want us to feel these emotions?
+
+Indeed, how does the composer know how we will feel when we listen to that piece? And if a composer can know so well how to bring out my innermost feelings without ever knowing me, is that the composer's talent and creativity, or does it stem from music theory having been shaped around humanity's collective unconscious over time? If the method for creating a desired emotion is already determined by theory, then where does creativity and talent stand in all of this?
+
+On this page, we will search for answers to these questions through the lens of Mozart (my favorite composer), but whether we will find them remains to be seen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mozart-section" data-header-title="Mozart: Requiem" class="relative bg-black text-white">
+        <div class="content-wrapper clearfix">
+            <div id="mozart-text-box" class="reveal-item text-box p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">Sorrow, Mourning, and Melancholy</h2>
+                
+                <div id="mozart-image-box" class="reveal-item image-box float-left-image">
+                    <img src="./Images/mozart.jpg" alt="Mozart Portresi" class="rounded-lg shadow-xl">
+                </div>
+                <p class="text-lg font-normal text-gray-300">
+                    The last piece <a href="https://tr.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Mozart</a> ever wrote, the <a href="https://www.youtube.com/watch?v=KSCK-rZKij4&list=PL16_a9ITNhRV9cHXfvtgOCKdIer2zKwBT&pp=0gcJCV8EOCosWNin" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Requiem</a>, is undoubtedly one of the most beautiful works ever composed in human history. Mozart composed it in 1791 for <a href="https://en-m-wikipedia-org.translate.goog/wiki/Franz_von_Walsegg?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Count Franz von Walsegg</a> to be performed at a ceremony commemorating the anniversary of his wife's death. However, Walsegg commissioned the piece anonymously, intending to pass it off as his own composition. Mozart's wife thwarted this plan by having the work performed at a public ceremony. The anonymity of the commission and Mozart's death before he could complete the work gave rise to the myth that he was actually writing it for his own funeral. The piece was ultimately completed by Mozart's student, <a href="https://en-m-wikipedia-org.translate.goog/wiki/Franz_Xaver_Süssmayr?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Franz Xaver Süssmayr</a>.
+
+Like its story, the piece itself is sorrowful, as its name implies. While listening, a sense of mourning and grief never leaves you; death feels very near, and a growing tension makes you feel as if you are approaching Judgment Day. So, how did Mozart make the work so heavy, somber, and melancholic?
+
+The work consists of 7 main sections and 14 choral and solo parts. Mozart's genius lies in his transformation of this <a href="https://en.wikipedia.org/wiki/Liturgy" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">liturgical</a> form into a profound artistic expression. While the "calm and peaceful" nature of the Introitus text is reflected in Mozart's music, other sections like the "Dies Irae" are described as "thrilling" and filled with "anguish." This sharp contrast shows that Mozart used the traditional form as a canvas to explore a wide emotional spectrum. Thus, the work transcends a mere religious function and becomes a masterpiece that speaks to universal human experiences like judgment and grief.
+
+The piece is written in D minor. Of course, Mozart's choice of instruments is not random. The Requiem is scored for 2 basset horns (in F), 2 bassoons, 2 trumpets (in D), 3 trombones (alto, tenor, bass), timpani (2 drums), violins, viola, and basso continuo (cello, double bass, and organ). The vocal forces include soprano, contralto, tenor, and bass soloists, along with an <a href="https://mymusictheory.com/satb-harmony/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">SATB</a> mixed choir. This rich vocal and instrumental ensemble allows for the work's dramatic and <a href="https://en.wikipedia.org/wiki/Counterpoint_(disambiguation)" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">contrapuntal</a> structure.
+
+
+
+The orchestration, especially in the Introitus and Kyrie sections, reflects an unusual choice: the absence of brighter-timbred instruments like flutes and oboes, combined with the prominent use of basset horns and bassoons, creates a darker overall woodwind timbre. This conscious choice directly supports the dark and melancholic mood of the Requiem, evoking feelings of death and mourning in the listener. Meanwhile, the "solemn, prophetic timbres" of the brass instruments, like the trumpets and timpani, reinforce the dramatic and awe-inspiring aspects of divine judgment.
+                </p>
+                <div class="quote text-gray-300">
+                    <p>Confutatis maledictis,</p>
+                    <p>Flammis acribus addictis:</p>
+                    <p>Voca me cum benedictis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="barber-section" data-header-title="Same Emotions" class="relative bg-black text-white">
+        <div class="content-wrapper clearfix">
+            <div id="barber-text-box" class="reveal-item text-box p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">Samuel Barber and Tomaso Albinani</h2>
+
+                <div id="barber-image-box" class="reveal-item image-box float-right-image">
+                    <img src="./Images/Samuel_Barber.jpg" alt="Barber Portresi" class="rounded-lg shadow-xl">
+                </div>
+                <p class="text-lg font-normal text-gray-300">
+                    We see almost identical or very similar techniques in many other pieces throughout music history. The first of these is <a href="https://en-m-wikipedia-org.translate.goog/wiki/Samuel_Barber?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Samuel Barber's</a> "<a href="https://youtu.be/VLR7s8Rq7Dw?si=7yaulqkBUVean_h0" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Adagio for Strings</a>," written in 1936. This piece was originally the slow movement of his String Quartet, Op. 11. It was rearranged for string orchestra upon the advice of conductor <a href="https://en-m-wikipedia-org.translate.goog/wiki/Arturo_Toscanini?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Arturo Toscanini</a>. The piece is very somber and sorrowful.
+
+Another piece is <a href="https://en-m-wikipedia-org.translate.goog/wiki/Tomaso_Albinoni?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Tomaso Albinoni's</a> "<a href="https://youtu.be/ye5JlhAyYhg?si=QOaDAqkDLeaqEFin" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Adagio in G Minor</a>." Although its authorship is not entirely certain, it is claimed to be a reconstruction by <a href="https://en-m-wikipedia-org.translate.goog/wiki/Remo_Giazotto?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Remo Giazotto</a> from a bass line fragment, thought to belong to Albinoni, that was recovered from a library in Dresden bombed during World War II, though this has not been proven. Both pieces are sorrowful, melancholic, and grief-stricken.
+
+However, all three pieces we have discussed so far have utilized the same techniques to create these emotions. They are composed in minor keys. Minor keys tend to create dark, serious, and somber feelings in all of us, whereas major keys are euphoric and exciting. All three pieces are played at a slow tempo. This corresponds to the slowed mental state experienced in moments of mourning and regret. In all three works, the way <a href="https://en.wikipedia.org/wiki/Consonance_and_dissonance" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">dissonances resolve to consonances</a> creates a feeling of heaviness in the listener. The intensity created by the layering of melodic lines expresses accumulated pain. The heavy and repetitive movement of the bass line, combined with the sorrowful melodies of the violins soaring above it and the use of tense harmonies, creates a feeling of chronic grief in the listener.
+
+In all three pieces, string instruments (violin, viola, cello, double bass) and low/mid-range woodwinds (bassoon, basset horn) are predominantly used. Brighter-timbred instruments like flutes and oboes are either not used at all or are used very sparingly. All three works also use descending melodic lines (descending scales or <a href="https://en.wikipedia.org/wiki/Arpeggio" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">arpeggios</a>) and lamenting motifs.
+
+It is possible to see the same techniques used for the same emotions in many other works. Even though these pieces were written in different eras, they still evoke the same emotions in us, even after 300 years.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interlude-section" data-header-title="Musical Archetypes" class="relative bg-black text-white">
+        <div class="content-wrapper justify-center">
+            <div class="reveal-item text-center max-w-3xl mx-auto p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">Emotions That Transcend Time and Place</h2>
+                <p class="text-lg font-normal text-gray-300">
+                    Perhaps music's greatest power is its ability to evoke the same emotions in every person, regardless of time and place. The harmony of lullabies sung to help small children fall asleep is nearly identical, whether in Japan or in an African tribe. In the same way, these three pieces we've discussed create the same feeling in most of us. Some of us may love this sadness, while others may not find it pleasant to listen to this melancholy, but both those who like it and those who don't still feel that melancholy.
+
+So, did other composers steal these techniques from Mozart, or did Mozart steal them from someone else? In fact, Albinoni lived before Mozart, so he couldn't have stolen from him. This is precisely where the next question comes to mind: If Mozart didn't steal it from anyone, who first decided that these techniques were sorrowful? Or did someone, long ago, listen to these kinds of notes, feel sad, and it has been ingrained in our minds ever since?
+
+Actually, when you think about the answer, the first point we must arrive at is this: if everyone feels the same emotion, then the source of this emotion must come from characteristics common to everyone. For example, the 4/4 time signature is one of the most beloved because it resembles the rhythm of a human heart; a descending melody resembles a human sigh. These are the sonic manifestations of our physical and emotional realities. Over thousands of years, these "sound gestures" have slowly become musical archetypes that allow everyone to experience the same feelings without words.
+
+Mozart and Barber did not try to invent sadness note by note; they used an archetype ingrained in our collective unconscious. So, if there is such a powerful archetype for melancholy, couldn't there be one for euphoria and joy as well? There absolutely is, but this time, we will make our comparison not with other classical works, but with Mozart and two modern pieces. By doing this, we will see that these archetypes have not changed at all over the years.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="eine-kleine-section" data-header-title="Mozart: Eine Kleine Nachtmusik" class="relative bg-black text-white">
+        <div class="content-wrapper clearfix">
+            <div id="eine-kleine-text-box" class="reveal-item text-box p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">A Little Serenade</h2>
+                
+                <div id="eine-kleine-image-box" class="reveal-item image-box float-left-image">
+                    <img src="./Images/nota2.png" alt="Mozart Portresi" class="rounded-lg shadow-xl">
+                </div>
+                <p class="text-lg font-normal text-gray-300">
+                    According to the notes in his own handwritten catalog, Mozart completed <a href="https://youtu.be/kqSVT1t1vCw?si=OPu9yuNHu4lw8VOy" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">this work</a> in Vienna in 1787. Although the exact reason for its composition is not known, the most common theory is that it was a "<a href="https://en.wikipedia.org/wiki/Serenade" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">serenade</a>," or "evening music," composed to be played at the open-air concerts or social events of wealthy aristocrats that were popular in Vienna at the time.
+
+The work is thought to have originally had 5 movements, two of which were <a href="https://en.wikipedia.org/wiki/Minuet" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">minuets</a> (which means they'll make you want to dance! :)). However, only 4 movements have survived to this day.
+
+The piece is written in a major key. G Major is a frequent choice, especially as it has a bright and resonant timbre on string instruments. The piece is in Sonata-Allegro form: the composer introduces two main themes in the beginning, then plays with these themes, moving them to different keys and creating tension. Finally, the initial themes are presented again in the home key, leading to a satisfying resolution where the tension is released.
+
+The iconic opening melody is known as a "<a href="https://en-m-wikipedia-org.translate.goog/wiki/The_Mannheim_Rocket?_x_tr_sl=en&_x_tr_tl=tr&_x_tr_hl=tr&_x_tr_pto=tc" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Mannheim Rocket</a>": the notes of a chord played rapidly and energetically in an upward direction. This creates an instant burst of excitement and energy. The rest of the melody is generally built on scales and arpeggios, with a structure that is clear, memorable, simple, and "singable" (<a href="https://en.wikipedia.org/wiki/Cantabile" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">cantabile</a>). The rhythm is short, sharp, and fast. The use of <a href="https://tr.wikipedia.org/wiki/Staccato" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">staccatos</a> in particular creates a cheerful mood in the piece. The work is homophonic, which ensures that the main, cheerful melody can always be heard while keeping the listener's focus.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="modern-similarity-section" data-header-title="Modern Emotions?" class="relative bg-black text-white">
+        <div class="content-wrapper clearfix">
+            <div id="modern-text-box" class="reveal-item text-box p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">ABBA and Queen</h2>
+                
+                <div id="modern-image-box" class="reveal-item image-box float-right-image">
+                    <img src="./Images/queen.jpg" alt="Modern Müzik Portresi" class="rounded-lg shadow-xl">
+                </div>
+                <p class="text-lg font-normal text-gray-300">
+                    The first example comes from <a href="https://en.wikipedia.org/wiki/ABBA" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">ABBA</a>: “<a href="https://youtu.be/xFrGuyw1V8s?si=BVtIsCMwpOdnVe3M" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Dancing Queen</a>.” As its name suggests, just like "Eine kleine Nachtmusik," it is a piece made to make people dance and feel cheerful. Again, as a fundamental requirement of the "happiness formula," it is written in a major key: A Major. The track begins with a piano <a href="https://en.wikipedia.org/wiki/Glissando" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">glissando</a> that can be considered the modern equivalent of the "Mannheim Rocket," creating an instant sense of euphoria and anticipation in the listener.
+
+While the chorus melody ascends to give a feeling of pure joy, the vocal melodies are simple, clear, and memorable. The chords, just as in Mozart's work, create a clear and stable foundation that gives the listener a sense of confidence. The song is also homophonic; there are clear vocal melodies in the forefront, with a rich layer of accompaniment from piano, bass, drums, and strings in the background. ABBA's famous layered backing vocals are a modern answer to the fullness created by Mozart's string orchestra.
+                </p>
+                <p class="text-lg font-normal text-gray-300 mt-6">
+                    The other piece is "<a href="https://youtu.be/HgzGwKwLmgM?si=Uk-L1mau2Nsn9NkD" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Don't Stop Me Now</a>" by <a href="https://en.wikipedia.org/wiki/Queen_(band)" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 hover:underline transition-colors">Queen</a>, one of the most iconic bands in music history. And what a coincidence?! This track also draws its energy from a fundamental source, a major key: F Major.
+
+The dynamic contrast used by Mozart—that is, the steps of tension and release—is also clearly visible in this song's structure, which starts calm and then suddenly explodes. The vocal melody, like Mozart's themes, has a wide range, and the energetic leaps from low to high in the chorus are the source of its joy. Its harmonic structure, though richer than ABBA's, is still fundamentally based on an unambiguous, strong, and functional harmony. The chord progression in the chorus offers the listener a satisfying and euphoric feeling.
+
+This work is also homophonic. While the band behind Freddie Mercury's incredible vocals creates a wall of harmony, Queen's trademark multi-tracked vocal recordings achieve an orchestral richness and timbre from a single human voice.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion-section" data-header-title="Mozart was a 'Genius'" class="relative bg-white text-gray-900">
+        <div class="content-wrapper justify-center">
+            <div class="reveal-item text-box max-w-3xl mx-auto p-6 bg-transparent rounded-xl">
+                <h2 class="text-4xl font-bold mb-4">Conclusion</h2>
+                <p class="text-lg font-normal text-gray-700">
+                    At the very beginning of this website, I started with an antithesis about music's place in our lives: whether it feels different to each of us and holds a special, unique meaning. As we compared Mozart's cheerful and sorrowful pieces with other works using similar techniques, we saw that the resulting emotion is not random. It appears as a reflection of the artist's intent and our collective experience, independent of our individual consciousness.
+
+We realized that when these standard formulas are used skillfully, the same emotions can be created in every musical work, from Albinoni to ABBA. The secret to how a composer knows what we will feel without knowing us lies here: in these standard formulas and our collective unconscious. When composers practice their art, they are not speaking to our individual souls, but to the soul of humanity.
+
+So then, again, the same question: "Where is the creativity in this?" If I want to write a lament, do I just use a minor key, a slow tempo, use certain instruments while favoring others, and that's it?
+
+Although I can't give an exact number, it wouldn't be wrong to claim that 90% of music consists of these ready-made formulas. But that remaining 10% is so vast that it's enough to open a chasm between geniuses like Mozart, Bach, and Beethoven and everyone else. Every song is an expression of certain physiological and emotional traits found within all of us.
+
+So, if we return to the question we asked at the very beginning... Maybe we can't say "every song is written for us," because the formulas are universal. But since we are also a part of that universe, then yes, I guess every song is written for us :)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white text-center py-8">
+        <p>This project was prepared by Emre Genç for the course SCED 330.</p>
+    </footer>
+
+    <script>
+        // Sayfadaki tüm section (bölüm) elementlerini seçiyoruz
+        const sections = document.querySelectorAll('section');
+        // Animasyonla belirecek tüm öğeleri seçiyoruz
+        const revealItems = document.querySelectorAll('.reveal-item');
+        // Sabit başlık ve başlık metni öğelerini seçiyoruz
+        const headerTitle = document.getElementById('header-title');
+        
+        // checkVisibility fonksiyonu: Sayfa kaydırıldığında görünürlük ve animasyonları kontrol eder
+        function checkVisibility() {
+            let currentSectionTitle = "Müzik ve Psikoloji";
+            
+            // Tüm bölümler için döngü
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // Bölüm ekranın %50'sinden fazlasını kaplıyorsa veya tam ortadaysa
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSectionTitle = section.dataset.headerTitle || currentSectionTitle;
+                }
+            });
+            
+            // Başlık metnini efektle güncelle
+            if (headerTitle.textContent !== currentSectionTitle) {
+                headerTitle.style.opacity = '0';
+                setTimeout(() => {
+                    headerTitle.textContent = currentSectionTitle;
+                    headerTitle.style.opacity = '1';
+                }, 300);
+            }
+            
+            // Animasyonları kontrol et
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isSectionVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+                
+                // reveal-item'ların görünürlüğünü kontrol et
+                const sectionRevealItems = section.querySelectorAll('.reveal-item');
+                sectionRevealItems.forEach(item => {
+                    if (isSectionVisible) {
+                        item.classList.add('is-visible');
+                    } else {
+                        item.classList.remove('is-visible');
+                    }
+                });
+            });
+        }
+
+        // Sayfa yüklendiğinde ve pencere her kaydırıldığında checkVisibility fonksiyonunu çalıştır
+        window.addEventListener('load', () => {
+            headerTitle.textContent = "Müzik ve Psikoloji";
+            checkVisibility();
+        });
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>
